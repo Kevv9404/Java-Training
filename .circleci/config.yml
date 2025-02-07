@@ -1,29 +1,41 @@
+# This config was automatically generated from your source code
+# Stacks detected: deps:java:.
 version: 2.1
-
-executors:
-  java-executor:
+jobs:
+  test-java:
     docker:
       - image: cimg/openjdk:17.0
-    working_directory: ~/project
-
-jobs:
-  test:
-    executor: java-executor
     steps:
       - checkout
       - run:
-          name: Cache Maven Dependencies
-          command: mvn dependency:go-offline
+          name: Calculate cache key
+          command: |-
+            find . -name 'pom.xml' -o -name 'gradlew*' -o -name '*.gradle*' | \
+                    sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
+      - restore_cache:
+          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
-          name: Run Tests
-          command: mvn test
+          command: mvn verify
       - store_test_results:
           path: target/surefire-reports
-      - store_artifacts:
-          path: target/surefire-reports
-
+      - save_cache:
+          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
+          paths:
+            - ~/.m2/repository
+  deploy:
+    # This is an example deploy job, not actually used by the workflow
+    docker:
+      - image: cimg/base:stable
+    steps:
+      # Replace this with steps to deploy to users
+      - run:
+          name: deploy
+          command: '#e.g. ./deploy.sh'
 workflows:
-  version: 2
-  test-workflow:
+  build-and-test:
     jobs:
-      - test
+      - test-java
+    # - deploy:
+    #     requires:
+    #       - test-java
+
