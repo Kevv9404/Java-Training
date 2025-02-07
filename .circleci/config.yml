@@ -1,0 +1,29 @@
+version: 2.1
+
+executors:
+  java-executor:
+    docker:
+      - image: cimg/openjdk:17.0
+    working_directory: ~/project
+
+jobs:
+  test:
+    executor: java-executor
+    steps:
+      - checkout
+      - run:
+          name: Cache Maven Dependencies
+          command: mvn dependency:go-offline
+      - run:
+          name: Run Tests
+          command: mvn test
+      - store_test_results:
+          path: target/surefire-reports
+      - store_artifacts:
+          path: target/surefire-reports
+
+workflows:
+  version: 2
+  test-workflow:
+    jobs:
+      - test
