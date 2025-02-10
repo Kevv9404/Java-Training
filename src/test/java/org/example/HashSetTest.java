@@ -133,7 +133,7 @@ public class HashSetTest {
     }
 
     @Test
-    public void difference_contains_only_elements_from_a_not_in_b() {
+    public void difference_contains_only_elements_from_the_invoking_object_minus_those_in_the_argument() {
         HashSet<Integer> a = new HashSet<>(5);
         HashSet<Integer> b = new HashSet<>(5);
 

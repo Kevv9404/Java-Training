@@ -138,14 +138,13 @@ public class HashSet<K> {
         HashSet<K> union = new HashSet<>(this.size() + b.size());
         Iterator<K> firstIteration = this.iterator();
 
-        while (firstIteration.hasNext()) {
+        while (firstIteration.hasNext())
             union.add(firstIteration.next());
-        }
 
         Iterator<K> secondIteration = b.iterator();
-        while (secondIteration.hasNext()) {
+        while (secondIteration.hasNext())
             union.add(secondIteration.next());
-        }
+
         return union;
     }
 
@@ -167,7 +166,7 @@ public class HashSet<K> {
 
     // this - b
     public HashSet<K> difference(HashSet<K> b) {
-        HashSet<K> difference = new HashSet<>(Math.min(this.size(), b.size()));
+        HashSet<K> difference = new HashSet<>(this.size());
 
         Iterator<K> iterator = this.iterator();
 
@@ -212,7 +211,7 @@ public class HashSet<K> {
         data1.add("A");
         data1.add("G");
         data1.add("A");
-        System.out.println(data.difference(data1));
+        System.out.println(data.union(data1));
 
         Iterator<String> i = data.iterator();
         while (i.hasNext())
