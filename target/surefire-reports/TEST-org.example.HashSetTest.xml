@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.example.HashSetTest" time="0.02" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.example.HashSetTest" time="0.023" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CO"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/23.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/kevinarroyoc/Desktop/JavaTraining/target/surefire/surefirebooter-20250210085056964_3.jar /Users/kevinarroyoc/Desktop/JavaTraining/target/surefire 2025-02-10T08-50-56_919-jvmRun1 surefire-20250210085056964_1tmp surefire_0-20250210085056964_2tmp"/>
+    <property name="sun.java.command" value="/Users/kevinarroyoc/Desktop/JavaTraining/target/surefire/surefirebooter-20250210085310030_3.jar /Users/kevinarroyoc/Desktop/JavaTraining/target/surefire 2025-02-10T08-53-09_978-jvmRun1 surefire-20250210085310030_1tmp surefire_0-20250210085310030_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/kevinarroyoc/Desktop/JavaTraining/target/test-classes:/Users/kevinarroyoc/Desktop/JavaTraining/target/classes:/Users/kevinarroyoc/.m2/repository/com/googlecode/lanterna/lanterna/3.1.2/lanterna-3.1.2.jar:/Users/kevinarroyoc/.m2/repository/org/clojure/clojure/1.11.3/clojure-1.11.3.jar:/Users/kevinarroyoc/.m2/repository/org/clojure/spec.alpha/0.3.218/spec.alpha-0.3.218.jar:/Users/kevinarroyoc/.m2/repository/org/clojure/core.specs.alpha/0.2.62/core.specs.alpha-0.2.62.jar:/Users/kevinarroyoc/.m2/repository/junit/junit/4.13.1/junit-4.13.1.jar:/Users/kevinarroyoc/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/kevinarroyoc/Desktop/JavaTraining/target/surefire/surefirebooter-20250210085056964_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/kevinarroyoc/Desktop/JavaTraining/target/surefire/surefirebooter-20250210085310030_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="23.0.2"/>
@@ -58,7 +58,7 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="intersection_contains_only_common_elements" classname="org.example.HashSetTest" time="0.002"/>
+  <testcase name="intersection_contains_only_common_elements" classname="org.example.HashSetTest" time="0.006"/>
   <testcase name="can_iterate_over_the_unique_values" classname="org.example.HashSetTest" time="0.0"/>
   <testcase name="keeps_just_a_single_instance_of_an_added_item" classname="org.example.HashSetTest" time="0.0"/>
   <testcase name="union_leaves_original_sets_unchanged" classname="org.example.HashSetTest" time="0.0"/>
