@@ -1,6 +1,7 @@
 package org.example;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -108,6 +109,48 @@ public class HashSetTest {
         assertFalse(b.contains(1));
         assertTrue(b.contains(3));
         assertTrue(b.contains(7));
+    }
+
+    @Test
+    public void intersection_contains_only_common_elements() {
+        HashSet<Integer> a = new HashSet<>(5);
+        HashSet<Integer> b = new HashSet<>(5);
+
+        a.add(1);
+        a.add(3);
+
+        b.add(3);
+        b.add(7);
+
+        a.intersect(b);
+
+        HashSet<Integer> c = a.intersect(b);
+
+        assertTrue(c.contains(3));   //
+        assertFalse(c.contains(1));  //
+        assertFalse(c.contains(7));  //
+        assertEquals(1, c.size());   //
+    }
+
+    @Test
+    public void difference_contains_only_elements_from_a_not_in_b() {
+        HashSet<Integer> a = new HashSet<>(5);
+        HashSet<Integer> b = new HashSet<>(5);
+
+        a.add(1);
+        a.add(3);
+        a.add(5);
+
+        b.add(3);
+        b.add(7);
+
+        HashSet<Integer> c = a.difference(b); // Método de diferencia
+
+        assertTrue(c.contains(1));
+        assertTrue(c.contains(5));
+        assertFalse(c.contains(3));
+        assertFalse(c.contains(7));
+        assertEquals(2, c.size());
     }
 
     /********************************************************************************

@@ -67,17 +67,18 @@ public class HashSet<K> {
 
     /**
      * Puts the given value in the table at key. Overwrites prior values for that key.
-     *
-     * @param value The thing you want to put in the table.
+     * <p>
+     * //         * @param value The thing you want to put in the table.
      */
     public void add(K key) {
         int code = Math.abs(key.hashCode());
         int bucketIndex = code % this.buckets.length;
         if (this.buckets[bucketIndex] == null)
             this.buckets[bucketIndex] = new LinkedList<>();
-        // TASK: Dedupe step...YOU HAVE THIS, I DON'T...
-        this.buckets[bucketIndex].add(key);
-        count++;
+        if (!this.buckets[bucketIndex].contains(key)) {
+            this.buckets[bucketIndex].add(key);
+            count++;
+        }
         if (needsResized())
             resize();
     }
@@ -134,20 +135,48 @@ public class HashSet<K> {
 
     // this U b
     public HashSet<K> union(HashSet<K> b) {
-        // TODO:
-        return null;
+        HashSet<K> union = new HashSet<>(this.size() + b.size());
+        Iterator<K> firstIteration = this.iterator();
+
+        while (firstIteration.hasNext()) {
+            union.add(firstIteration.next());
+        }
+
+        Iterator<K> secondIteration = b.iterator();
+        while (secondIteration.hasNext()) {
+            union.add(secondIteration.next());
+        }
+        return union;
     }
 
     // this I b
     public HashSet<K> intersect(HashSet<K> b) {
-        // TODO:
-        return null;
+        HashSet<K> intersect = new HashSet<>(Math.min(this.size(), b.size()));
+        HashSet<K> smaller = (this.size() < b.size() ? this : b);
+        HashSet<K> larger = (this.size() < b.size() ? b : this);
+
+        Iterator<K> iterator = smaller.iterator();
+
+        while (iterator.hasNext()) {
+            K element = iterator.next();
+            if (larger.contains(element))
+                intersect.add(element);
+        }
+        return intersect;
     }
 
     // this - b
     public HashSet<K> difference(HashSet<K> b) {
-        // TODO:
-        return null;
+        HashSet<K> difference = new HashSet<>(Math.min(this.size(), b.size()));
+
+        Iterator<K> iterator = this.iterator();
+
+        while (iterator.hasNext()) {
+            K element = iterator.next();
+            if (!b.contains(element))
+                difference.add(element);
+        }
+        return difference;
     }
 
     public int size() {
@@ -170,11 +199,20 @@ public class HashSet<K> {
 
     public static void main(String[] args) {
         HashSet<String> data = new HashSet<>(2);
+
         data.add("A");
         data.add("B");
         data.add("C");
         data.add("D");
-        System.out.println(data);
+
+
+        HashSet<String> data1 = new HashSet<>(2);
+
+        data1.add("C");
+        data1.add("A");
+        data1.add("G");
+        data1.add("A");
+        System.out.println(data.difference(data1));
 
         Iterator<String> i = data.iterator();
         while (i.hasNext())
